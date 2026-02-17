@@ -19,7 +19,11 @@ export const Registration: React.FC = () => {
     setError(null);
 
     try {
-      const response = await fetch('/api/register', {
+      // Détecter l'environnement
+      const isHostinger = window.location.hostname.includes('hostinger') || !window.location.hostname.includes('vercel');
+      const apiPath = isHostinger ? '/api/register.php' : '/api/register';
+
+      const response = await fetch(apiPath, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -27,15 +31,7 @@ export const Registration: React.FC = () => {
         body: JSON.stringify(formData),
       });
 
-      let result;
-      const contentType = response.headers.get("content-type");
-      
-      if (contentType && contentType.indexOf("application/json") !== -1) {
-        result = await response.json();
-      } else {
-        const textError = await response.text();
-        throw new Error(`Le serveur a répondu par une erreur non-JSON (Code ${response.status}). Détails: ${textError.substring(0, 100)}...`);
-      }
+      const result = await response.json();
 
       if (!response.ok || !result.success) {
         throw new Error(result.error || `Erreur serveur (Code ${response.status})`);
@@ -43,8 +39,7 @@ export const Registration: React.FC = () => {
 
       setIsSubmitted(true);
     } catch (err: any) {
-      console.error("Detailed Submission Error:", err);
-      // On affiche l'erreur réelle pour comprendre le problème
+      console.error("Submission Error:", err);
       setError(err.message);
     } finally {
       setIsLoading(false);
@@ -74,7 +69,7 @@ export const Registration: React.FC = () => {
             <h4 className="text-3xl font-serif text-white mb-6">Demande Enregistrée</h4>
             <p className="text-luxuryTextGray text-lg mb-10 font-light">
               Votre demande a été transmise à notre service protocole.<br/>
-              Nous reviendrons vers vous par email à <strong>{formData.email}</strong> pour valider votre invitation.
+              Nous reviendrons vers vous par email à <strong>{formData.email}</strong>.
             </p>
             <button 
               onClick={() => setIsSubmitted(false)}
@@ -87,12 +82,9 @@ export const Registration: React.FC = () => {
           <FadeIn className="bg-luxuryBlack p-10 md:p-20 border border-white/5 shadow-2xl">
             <form onSubmit={handleSubmit} className="space-y-12">
               {error && (
-                <div className="p-6 bg-red-950/20 border-l-2 border-red-500 text-red-200 text-sm font-light font-serif">
-                  <span className="text-red-500 font-bold block mb-1 uppercase tracking-widest text-[10px]">Erreur de transmission :</span>
+                <div className="p-6 bg-red-950/20 border-l-2 border-red-500 text-red-200 text-sm font-light">
+                  <span className="text-red-500 font-bold block mb-1 uppercase tracking-widest text-[10px]">Erreur :</span>
                   {error}
-                  <div className="mt-4 pt-4 border-t border-red-500/20 text-[10px] opacity-70 italic">
-                    Si le problème persiste, contactez-nous directement : +212 612 610 012
-                  </div>
                 </div>
               )}
               
@@ -103,7 +95,7 @@ export const Registration: React.FC = () => {
                     type="text"
                     required
                     disabled={isLoading}
-                    className="w-full bg-transparent border-b border-white/10 py-4 text-white focus:outline-none focus:border-luxuryGold transition-all duration-500 font-light text-lg disabled:opacity-30"
+                    className="w-full bg-transparent border-b border-white/10 py-4 text-white focus:outline-none focus:border-luxuryGold transition-all duration-500 font-light text-lg"
                     placeholder="Karim Benabdallah"
                     value={formData.name}
                     onChange={e => setFormData({ ...formData, name: e.target.value })}
@@ -115,7 +107,7 @@ export const Registration: React.FC = () => {
                     type="email"
                     required
                     disabled={isLoading}
-                    className="w-full bg-transparent border-b border-white/10 py-4 text-white focus:outline-none focus:border-luxuryGold transition-all duration-500 font-light text-lg disabled:opacity-30"
+                    className="w-full bg-transparent border-b border-white/10 py-4 text-white focus:outline-none focus:border-luxuryGold transition-all duration-500 font-light text-lg"
                     placeholder="contact@entreprise.ma"
                     value={formData.email}
                     onChange={e => setFormData({ ...formData, email: e.target.value })}
@@ -130,7 +122,7 @@ export const Registration: React.FC = () => {
                     type="text"
                     required
                     disabled={isLoading}
-                    className="w-full bg-transparent border-b border-white/10 py-4 text-white focus:outline-none focus:border-luxuryGold transition-all duration-500 font-light text-lg disabled:opacity-30"
+                    className="w-full bg-transparent border-b border-white/10 py-4 text-white focus:outline-none focus:border-luxuryGold transition-all duration-500 font-light text-lg"
                     placeholder="Nom de la structure"
                     value={formData.company}
                     onChange={e => setFormData({ ...formData, company: e.target.value })}
@@ -142,7 +134,7 @@ export const Registration: React.FC = () => {
                     type="text"
                     required
                     disabled={isLoading}
-                    className="w-full bg-transparent border-b border-white/10 py-4 text-white focus:outline-none focus:border-luxuryGold transition-all duration-500 font-light text-lg disabled:opacity-30"
+                    className="w-full bg-transparent border-b border-white/10 py-4 text-white focus:outline-none focus:border-luxuryGold transition-all duration-500 font-light text-lg"
                     placeholder="CEO, Fondateur..."
                     value={formData.position}
                     onChange={e => setFormData({ ...formData, position: e.target.value })}
@@ -154,7 +146,7 @@ export const Registration: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-6 bg-luxuryGold text-luxuryBlack font-bold text-xs tracking-ultra-widest uppercase hover:bg-white transition-all duration-500 shadow-2xl shadow-luxuryGold/20 flex items-center justify-center disabled:opacity-50"
+                  className="w-full py-6 bg-luxuryGold text-luxuryBlack font-bold text-xs tracking-ultra-widest uppercase hover:bg-white transition-all duration-500 flex items-center justify-center"
                 >
                   {isLoading ? (
                     <div className="w-5 h-5 border-2 border-luxuryBlack border-t-transparent rounded-full animate-spin"></div>

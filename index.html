@@ -48,28 +48,26 @@
         background: rgba(10, 10, 10, 0.8);
         backdrop-filter: blur(12px);
       }
-      /* Correction de l'autofill pour garder le fond noir et texte blanc/or */
-      input:-webkit-autofill,
-      input:-webkit-autofill:hover,
-      input:-webkit-autofill:focus,
-      input:-webkit-autofill:active {
+      input:-webkit-autofill {
           -webkit-box-shadow: 0 0 0 30px #0A0A0A inset !important;
           -webkit-text-fill-color: white !important;
-          transition: background-color 5000s ease-in-out 0s;
       }
     </style>
   <script type="importmap">
 {
   "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
     "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4",
-    "resend": "https://esm.sh/resend@^6.9.2"
+    "resend": "https://esm.sh/resend@^6.9.2",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.4"
   }
 }
 </script>
 </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
