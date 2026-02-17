@@ -19,7 +19,6 @@ export const Registration: React.FC = () => {
     setError(null);
 
     try {
-      // On appelle notre propre API Vercel qui gère SheetMonkey ET l'Email
       const response = await fetch('/api/register', {
         method: 'POST',
         headers: {
@@ -35,8 +34,9 @@ export const Registration: React.FC = () => {
       }
 
       setIsSubmitted(true);
-    } catch (err) {
-      setError("Désolé, une erreur technique est survenue. Veuillez nous contacter au +212 612 610 012.");
+    } catch (err: any) {
+      console.error("Submission Error:", err);
+      setError(err.message || "Désolé, une erreur technique est survenue. Veuillez nous contacter au +212 612 610 012.");
     } finally {
       setIsLoading(false);
     }
@@ -78,7 +78,8 @@ export const Registration: React.FC = () => {
           <FadeIn className="bg-luxuryBlack p-10 md:p-20 border border-white/5 shadow-2xl">
             <form onSubmit={handleSubmit} className="space-y-12">
               {error && (
-                <div className="p-4 bg-red-500/10 border border-red-500/50 text-red-500 text-sm font-medium">
+                <div className="p-6 bg-red-950/20 border-l-2 border-red-500 text-red-200 text-sm font-light font-serif italic">
+                  <span className="text-red-500 font-bold not-italic block mb-1">Attention :</span>
                   {error}
                 </div>
               )}
@@ -155,3 +156,4 @@ export const Registration: React.FC = () => {
     </section>
   );
 };
+
