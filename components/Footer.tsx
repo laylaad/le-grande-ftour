@@ -22,8 +22,22 @@ export const Footer: React.FC = () => {
               Produit par l’agence Affairino. Le Grand Ftour redéfinit les standards de l'excellence business au Maroc.
             </p>
             <div className="flex space-x-6">
-              <a href="#" className="text-[10px] tracking-widest text-luxuryGold hover:text-white transition-colors font-bold uppercase">Instagram</a>
-              <a href="#" className="text-[10px] tracking-widest text-luxuryGold hover:text-white transition-colors font-bold uppercase">LinkedIn</a>
+              <a 
+                href="https://www.instagram.com/p/DUYGa-GDCVa/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-[10px] tracking-widest text-luxuryGold hover:text-white transition-colors font-bold uppercase"
+              >
+                Instagram
+              </a>
+              <a 
+                href="https://www.linkedin.com/showcase/le-grand-ftour/posts/?feedView=all" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-[10px] tracking-widest text-luxuryGold hover:text-white transition-colors font-bold uppercase"
+              >
+                LinkedIn
+              </a>
             </div>
           </div>
 
