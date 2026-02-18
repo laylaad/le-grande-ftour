@@ -2,12 +2,12 @@ import React from 'react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer id="contact" className="bg-luxuryBlack border-t border-white/5 pt-12 pb-6">
+    <footer id="contact" className="bg-luxuryBlack border-t border-white/5 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
           {/* Logo & Description */}
           <div className="flex flex-col items-start">
-            <div className="h-16 mb-6">
+            <div className="h-14 mb-6">
               <img 
                 src="logo.png" 
                 alt="Logo Le Grand Ftour" 
@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
                 }}
               />
             </div>
-            <p className="text-luxuryTextGray text-xs leading-relaxed max-w-xs italic opacity-60">
+            <p className="text-luxuryTextGray text-xs leading-relaxed max-w-xs italic opacity-50">
               Produit par l’agence <span className="text-luxuryGold">Affairino</span>. L'excellence business au Maroc, redéfinissant les connexions stratégiques.
             </p>
           </div>
@@ -29,15 +29,15 @@ export const Footer: React.FC = () => {
           {/* Contact Details */}
           <div className="flex flex-col md:items-center">
             <div className="text-left md:text-center">
-              <h5 className="text-white text-[10px] uppercase font-bold tracking-[0.3em] mb-4">Conciergerie</h5>
-              <p className="text-luxuryGold text-2xl font-serif italic mb-2">+212 612 610 012</p>
-              <p className="text-luxuryTextGray text-[10px] uppercase tracking-widest opacity-40">Disponible 24/7 pour nos invités</p>
+              <h5 className="text-white text-[10px] uppercase font-bold tracking-[0.3em] mb-4">Contact & Conciergerie</h5>
+              <p className="text-luxuryGold text-2xl font-serif italic mb-2 tracking-tighter">+212 612 610 012</p>
+              <p className="text-luxuryTextGray text-[10px] uppercase tracking-widest opacity-40">Service Protocole Affairino</p>
             </div>
           </div>
 
           {/* Social Networks */}
           <div className="flex flex-col md:items-end">
-            <h5 className="text-white text-[10px] uppercase font-bold tracking-[0.3em] mb-6">Écosystème Digital</h5>
+            <h5 className="text-white text-[10px] uppercase font-bold tracking-[0.3em] mb-6">Réseaux Sociaux</h5>
             <div className="flex gap-4">
               <a 
                 href="https://www.instagram.com/legrandftour/" 

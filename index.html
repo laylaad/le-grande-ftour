@@ -55,23 +55,17 @@
       .gold-gradient-text {
         background: linear-gradient(135deg, #e1a822 0%, #f3cf7a 50%, #b3861b 100%);
         -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
       }
       .section-divider {
         height: 1px;
         background: linear-gradient(90deg, transparent, rgba(225, 168, 34, 0.15), transparent);
       }
-      .gold-border {
-        border-image: linear-gradient(to right, transparent, #e1a822, transparent) 1;
-      }
       ::-webkit-scrollbar { width: 4px; }
       ::-webkit-scrollbar-track { background: #000000; }
       ::-webkit-scrollbar-thumb { background: #e1a822; }
-      
-      ::selection {
-        background-color: #e1a822;
-        color: #000000;
-      }
+      ::selection { background-color: #e1a822; color: #000000; }
     </style>
   <script type="importmap">
 {
