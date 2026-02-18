@@ -6,7 +6,8 @@ export const CountdownSection: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState<CountdownTime>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    const targetDate = new Date('2026-03-12T18:00:00').getTime();
+    // Date cible : 7 Mars 2026 à 17:00 (5:00 PM)
+    const targetDate = new Date('2026-03-07T17:00:00').getTime();
     const interval = setInterval(() => {
       const now = new Date().getTime();
       const distance = targetDate - now;
@@ -27,7 +28,7 @@ export const CountdownSection: React.FC = () => {
         <FadeIn className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
           <div className="flex items-center gap-4">
             <div className="w-2 h-[1px] bg-luxuryGold/40"></div>
-            <h3 className="text-luxuryGold tracking-[0.4em] uppercase text-[10px] font-bold">L'Événement commence dans</h3>
+            <h3 className="text-luxuryGold tracking-[0.4em] uppercase text-[10px] font-bold">L'Expérience commence dans</h3>
             <div className="w-2 h-[1px] bg-luxuryGold/40"></div>
           </div>
           

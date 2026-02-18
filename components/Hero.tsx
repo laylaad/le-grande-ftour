@@ -22,7 +22,7 @@ export const Hero: React.FC = () => {
             <FadeIn direction="up">
               <div className="inline-flex items-center gap-3 px-4 py-1.5 border border-luxuryGold/20 bg-luxuryGold/5 mb-8">
                  <div className="w-1.5 h-1.5 bg-luxuryGold rounded-full animate-pulse shadow-[0_0_8px_#e1a822]"></div>
-                 <span className="text-luxuryGold text-[11px] tracking-[0.4em] uppercase font-bold italic">Agadir | Ramadan 2026</span>
+                 <span className="text-luxuryGold text-[11px] tracking-[0.4em] uppercase font-bold italic">7 Mars 2026 | 17:00</span>
               </div>
               
               <h1 className="text-6xl md:text-8xl xl:text-9xl font-serif text-white mb-8 tracking-tighter leading-[0.85]">
@@ -31,7 +31,7 @@ export const Hero: React.FC = () => {
               </h1>
               
               <p className="text-white/40 text-lg md:text-xl max-w-xl leading-relaxed mb-10 font-light font-serif italic border-l-2 border-luxuryGold/30 pl-8">
-                "Une plateforme stratégique où l'excellence entrepreneuriale rencontre l'élégance du protocole."
+                "Une expérience immersive dédiée au leadership, à l’excellence et aux connexions stratégiques."
               </p>
               
               <div className="flex flex-wrap gap-6">
@@ -39,22 +39,15 @@ export const Hero: React.FC = () => {
                   href="#inscription"
                   className="group relative inline-flex items-center justify-center px-12 py-5 bg-luxuryGold text-luxuryBlack font-bold text-xs tracking-ultra-widest uppercase overflow-hidden transition-all duration-700 hover:bg-white"
                 >
-                  <span className="relative z-10">Demander une invitation</span>
+                  <span className="relative z-10">Demander mon invitation</span>
                   <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                </a>
-                <a
-                  href="#programme"
-                  className="group inline-flex items-center justify-center px-12 py-5 border border-white/10 text-white font-bold text-xs tracking-ultra-widest uppercase hover:border-luxuryGold hover:text-luxuryGold transition-all duration-500"
-                >
-                  <span>Agenda du soir</span>
-                  <svg className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </a>
               </div>
             </FadeIn>
           </div>
           
           <div className="lg:col-span-5 hidden lg:flex justify-end relative">
-            <FadeIn direction="none" delay={400} className="relative w-full max-w-sm aspect-square flex items-center justify-center animate-float">
+            <FadeIn direction="none" delay={400} className="relative w-full max-w-sm aspect-square flex items-center justify-center animate-float group">
               <div className="absolute inset-0 border border-luxuryGold/10 rounded-full scale-110 transition-transform duration-1000 group-hover:scale-125"></div>
               <div className="absolute inset-0 border border-luxuryGold/5 rounded-full scale-125 animate-pulse-slow"></div>
               
@@ -69,9 +62,8 @@ export const Hero: React.FC = () => {
         </div>
       </div>
 
-      {/* Indicateur de Scroll */}
       <div className="absolute bottom-12 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-4 opacity-40 hover:opacity-100 transition-opacity duration-500">
-        <span className="text-[9px] uppercase tracking-[0.5em] text-luxuryGold font-bold">Scroll</span>
+        <span className="text-[9px] uppercase tracking-[0.5em] text-luxuryGold font-bold">Explorer</span>
         <div className="w-[1px] h-16 bg-gradient-to-b from-luxuryGold via-luxuryGold/50 to-transparent"></div>
       </div>
     </section>
