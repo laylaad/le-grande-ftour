@@ -30,7 +30,6 @@ export default async function handler(req: any, res: any) {
     if (sheetResponse.ok) {
       return res.status(200).json({ success: true });
     } else {
-      const errorText = await sheetResponse.text();
       return res.status(500).json({ success: false, error: "Erreur de transmission vers la base de données." });
     }
   } catch (error: any) {
