@@ -1,30 +1,25 @@
-
 import React from 'react';
 import { FadeIn } from './FadeIn';
 import { Pillar } from '../types';
 
 const PILLARS: Pillar[] = [
-  { title: 'Les Trophées Signature', description: 'Une cérémonie de consécration dédiée aux leaders (Agriculture, Industrie, Digital...).', icon: '🏆' },
-  { title: "L'Expérience Tapis Rouge", description: 'Un accueil protocolaire honorant chaque invité comme une figure majeure.', icon: '🔴' },
-  { title: 'Networking Stratégique', description: 'Un cercle de plus de 500 décideurs réunis pour générer des synergies professionnelles.', icon: '🤝' },
-  { title: 'Vitrine de Prestige', description: 'Une plateforme de visibilité exclusive pour les marques d\'excellence.', icon: '✨' }
+  { title: 'Trophées Signature', description: 'Consécration des leaders nationaux.', icon: '🏆' },
+  { title: 'Expérience Prestige', description: 'Accueil protocolaire haut de gamme.', icon: '🔴' },
+  { title: 'Networking', description: 'Cercle de 500 décideurs réunis.', icon: '🤝' },
+  { title: 'Visibilité', description: 'Vitrine pour marques d\'excellence.', icon: '✨' }
 ];
 
 export const Pillars: React.FC = () => {
   return (
-    <section id="offres" className="py-12 md:py-16 bg-luxuryGray relative">
+    <section id="offres" className="py-6 bg-luxuryBlack border-b border-white/5">
       <div className="max-w-7xl mx-auto px-6">
-        <FadeIn className="text-center mb-10">
-          <h2 className="text-luxuryGold tracking-[0.4em] uppercase text-[9px] font-bold mb-2">Nos Offres d'Excellence</h2>
-          <h3 className="text-2xl md:text-4xl font-serif text-white">Une Expérience Immersive</h3>
-        </FadeIn>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {PILLARS.map((pillar, idx) => (
-            <FadeIn key={pillar.title} delay={idx * 100}>
-              <div className="p-8 border border-white/5 bg-luxuryBlack/50 hover:bg-luxuryBlack transition-all h-full">
-                <div className="text-2xl mb-4">{pillar.icon}</div>
-                <h4 className="text-white text-lg font-serif mb-2 tracking-wide group-hover:text-luxuryGold">{pillar.title}</h4>
-                <p className="text-luxuryTextGray text-sm leading-relaxed font-light">{pillar.description}</p>
+            <FadeIn key={pillar.title} delay={idx * 50}>
+              <div className="p-5 border border-white/10 bg-luxuryGray/50 hover:border-luxuryRed transition-all duration-500 h-full group">
+                <div className="text-xl mb-3 group-hover:scale-110 transition-transform filter drop-shadow-[0_0_8px_rgba(173,0,0,0.5)]">{pillar.icon}</div>
+                <h4 className="text-white text-xs font-serif mb-1 uppercase tracking-wider group-hover:text-luxuryGold">{pillar.title}</h4>
+                <p className="text-luxuryTextGray text-[10px] leading-tight font-light group-hover:text-white/80">{pillar.description}</p>
               </div>
             </FadeIn>
           ))}

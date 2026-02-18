@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { CountdownTime } from '../types';
 import { FadeIn } from './FadeIn';
@@ -23,24 +22,22 @@ export const CountdownSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="bg-luxuryGray py-6 border-y border-white/5 relative overflow-hidden">
+    <section className="bg-luxuryGray py-3 border-y border-luxuryRed/20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <FadeIn className="text-center">
-          <h3 className="text-luxuryGold tracking-[0.4em] uppercase text-[9px] font-bold mb-4">
-            L'Expérience commence dans
-          </h3>
-          <div className="flex flex-wrap justify-center gap-6 md:gap-12">
+        <FadeIn className="text-center flex flex-col md:flex-row items-center justify-center gap-4">
+          <h3 className="text-luxuryRed tracking-[0.3em] uppercase text-[9px] font-bold">Lancement de l'expérience</h3>
+          <div className="flex gap-6 md:gap-10">
             {[
               { label: 'Jours', value: timeLeft.days },
               { label: 'Heures', value: timeLeft.hours },
-              { label: 'Minutes', value: timeLeft.minutes },
-              { label: 'Secondes', value: timeLeft.seconds },
+              { label: 'Min', value: timeLeft.minutes },
+              { label: 'Sec', value: timeLeft.seconds },
             ].map((item) => (
-              <div key={item.label} className="flex flex-col items-center group">
-                <span className="text-3xl md:text-5xl font-serif text-white tabular-nums tracking-tighter">
+              <div key={item.label} className="flex flex-col items-center">
+                <span className="text-2xl md:text-3xl font-serif text-white tabular-nums tracking-tighter">
                   {String(item.value).padStart(2, '0')}
                 </span>
-                <span className="text-[9px] text-luxuryGold tracking-[0.2em] uppercase mt-2 font-bold opacity-60">
+                <span className="text-[7px] text-luxuryGold uppercase font-bold tracking-widest opacity-60">
                   {item.label}
                 </span>
               </div>
