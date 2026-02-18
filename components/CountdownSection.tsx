@@ -22,22 +22,27 @@ export const CountdownSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="bg-luxuryGray py-3 border-y border-luxuryRed/20 relative overflow-hidden">
+    <section className="bg-luxuryBlack py-8 border-y border-white/5 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <FadeIn className="text-center flex flex-col md:flex-row items-center justify-center gap-4">
-          <h3 className="text-luxuryRed tracking-[0.3em] uppercase text-[9px] font-bold">Lancement de l'expérience</h3>
-          <div className="flex gap-6 md:gap-10">
+        <FadeIn className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+          <div className="flex items-center gap-4">
+            <div className="w-2 h-[1px] bg-luxuryGold/40"></div>
+            <h3 className="text-luxuryGold tracking-[0.4em] uppercase text-[10px] font-bold">L'Événement commence dans</h3>
+            <div className="w-2 h-[1px] bg-luxuryGold/40"></div>
+          </div>
+          
+          <div className="flex gap-8 md:gap-14">
             {[
               { label: 'Jours', value: timeLeft.days },
               { label: 'Heures', value: timeLeft.hours },
-              { label: 'Min', value: timeLeft.minutes },
-              { label: 'Sec', value: timeLeft.seconds },
+              { label: 'Minutes', value: timeLeft.minutes },
+              { label: 'Secondes', value: timeLeft.seconds },
             ].map((item) => (
-              <div key={item.label} className="flex flex-col items-center">
-                <span className="text-2xl md:text-3xl font-serif text-white tabular-nums tracking-tighter">
+              <div key={item.label} className="flex flex-col items-center group">
+                <span className="text-4xl md:text-5xl font-serif text-white tabular-nums tracking-tighter group-hover:text-luxuryGold transition-colors duration-500">
                   {String(item.value).padStart(2, '0')}
                 </span>
-                <span className="text-[7px] text-luxuryGold uppercase font-bold tracking-widest opacity-60">
+                <span className="text-[8px] text-luxuryGold/60 uppercase font-bold tracking-[0.2em] mt-1">
                   {item.label}
                 </span>
               </div>

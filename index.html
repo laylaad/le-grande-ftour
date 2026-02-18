@@ -12,9 +12,10 @@
           extend: {
             colors: {
               luxuryGold: '#e1a822',
-              luxuryGoldHover: '#f0c14b',
-              luxuryRed: '#ad0000',
+              luxuryGoldLight: '#f3cf7a',
+              luxuryGoldDark: '#b3861b',
               luxuryBlack: '#000000',
+              luxuryBlackElevated: '#050505',
               luxuryGray: '#0a0a0a',
               luxuryTextGray: '#A0A0A0',
             },
@@ -23,16 +24,21 @@
               sans: ['Montserrat', 'sans-serif'],
             },
             letterSpacing: {
-              'ultra-widest': '0.35em',
+              'ultra-widest': '0.4em',
             },
             animation: {
-              'fade-in-up': 'fadeInUp 1s ease-out forwards',
-              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'fade-in-up': 'fadeInUp 1.2s ease-out forwards',
+              'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'float': 'float 3s ease-in-out infinite',
             },
             keyframes: {
               fadeInUp: {
-                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '0%': { opacity: '0', transform: 'translateY(30px)' },
                 '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-10px)' },
               }
             }
           }
@@ -44,30 +50,38 @@
         background-color: #000000;
         color: white;
         overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
       }
-      .bg-glass {
-        background: rgba(0, 0, 0, 0.85);
-        backdrop-filter: blur(12px);
+      .gold-gradient-text {
+        background: linear-gradient(135deg, #e1a822 0%, #f3cf7a 50%, #b3861b 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
-      ::-webkit-scrollbar { width: 5px; }
+      .section-divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(225, 168, 34, 0.15), transparent);
+      }
+      .gold-border {
+        border-image: linear-gradient(to right, transparent, #e1a822, transparent) 1;
+      }
+      ::-webkit-scrollbar { width: 4px; }
       ::-webkit-scrollbar-track { background: #000000; }
       ::-webkit-scrollbar-thumb { background: #e1a822; }
       
-      /* Accentuation rouge pour les sélections */
       ::selection {
-        background-color: #ad0000;
-        color: white;
+        background-color: #e1a822;
+        color: #000000;
       }
     </style>
   <script type="importmap">
 {
   "imports": {
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.4",
-    "react/": "https://esm.sh/react@^19.2.4/",
     "react": "https://esm.sh/react@^19.2.4",
-    "vite": "https://esm.sh/vite@^7.3.1",
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "resend": "https://esm.sh/resend@^6.9.2"
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "resend": "https://esm.sh/resend@^6.9.2",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.4"
   }
 }
 </script>
