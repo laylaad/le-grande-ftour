@@ -12,82 +12,96 @@ export const Registration: React.FC = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const isHostinger = window.location.hostname.includes('hostinger') || !window.location.hostname.includes('vercel');
-      const apiPath = isHostinger ? '/api/register.php' : '/api/register';
-      const response = await fetch(apiPath, {
+      // Cloudflare Pages détecte automatiquement le dossier /functions/api
+      const response = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
+      
       const result = await response.json();
       
       if (!response.ok || !result.success) {
-        throw new Error(result.error || 'Une erreur est survenue lors de la connexion au service.');
+        throw new Error(result.error || 'Une erreur est survenue.');
       }
       setIsSubmitted(true);
     } catch (err: any) { 
-      const cleanError = err.message.includes('<!DOCTYPE') 
-        ? "Service momentanément indisponible. Contactez-nous au +212 612 610 012." 
-        : err.message;
-      setError(cleanError); 
+      setError(err.message || "Service momentanément indisponible."); 
     } finally { 
       setIsLoading(false); 
     }
   };
 
   return (
-    <section id="inscription" className="py-6 bg-luxuryBlack border-t border-white/5">
-      <div className="max-w-2xl mx-auto px-6">
-        <FadeIn className="text-center mb-6">
-          <h2 className="text-luxuryRed tracking-[0.4em] uppercase text-[8px] font-bold mb-1">Invitation Exclusive</h2>
-          <h3 className="text-2xl md:text-3xl font-serif text-white uppercase tracking-tighter">Inscription</h3>
+    <section id="inscription" className="py-32 bg-luxuryBlack relative">
+      <div className="section-divider absolute top-0 left-0 w-full opacity-50"></div>
+      
+      <div className="max-w-4xl mx-auto px-6">
+        <FadeIn className="text-center mb-16">
+          <h2 className="text-luxuryGold tracking-[0.5em] uppercase text-[11px] font-bold mb-6">Conciergerie & Protocole</h2>
+          <h3 className="text-4xl md:text-6xl font-serif text-white uppercase tracking-tighter">Demande d'Invitation</h3>
         </FadeIn>
         
         {isSubmitted ? (
-          <FadeIn className="bg-luxuryGray p-6 border border-luxuryGold/30 text-center shadow-2xl">
-            <div className="w-12 h-12 bg-luxuryGold/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-6 h-6 text-luxuryGold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/>
+          <FadeIn className="bg-luxuryBlackElevated p-16 border border-luxuryGold/30 text-center shadow-2xl relative overflow-hidden">
+             <div className="absolute top-0 right-0 w-32 h-32 bg-luxuryGold/5 blur-[60px] rounded-full"></div>
+            
+            <div className="w-20 h-20 bg-luxuryGold/10 rounded-full flex items-center justify-center mx-auto mb-8 border border-luxuryGold/20">
+              <svg className="w-10 h-10 text-luxuryGold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7"/>
               </svg>
             </div>
-            <h4 className="text-white text-base mb-1 font-serif">Demande Enregistrée</h4>
-            <p className="text-luxuryTextGray text-[10px] mb-4">Notre service protocole reviendra vers vous.</p>
-            <button onClick={() => setIsSubmitted(false)} className="text-luxuryGold text-[9px] uppercase font-bold border-b border-luxuryGold/30 hover:text-luxuryRed transition-colors">Nouvelle inscription</button>
+            <h4 className="text-white text-3xl mb-4 font-serif italic">Requête Transmise</h4>
+            <p className="text-luxuryTextGray text-lg mb-10 font-light italic">Votre demande est en cours d'examen par notre service protocole.</p>
+            <button onClick={() => setIsSubmitted(false)} className="text-luxuryGold text-xs uppercase font-bold tracking-[0.3em] border-b-2 border-luxuryGold/30 hover:text-white hover:border-white transition-all duration-500">Soumettre une nouvelle demande</button>
           </FadeIn>
         ) : (
-          <FadeIn className="bg-luxuryGray p-6 md:p-8 border border-white/5 shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-luxuryRed/50 to-transparent"></div>
+          <FadeIn className="bg-luxuryBlackElevated p-10 md:p-16 border border-white/5 shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-luxuryGold to-transparent opacity-50"></div>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-12">
               {error && (
-                <div className="p-3 bg-luxuryRed/10 border border-luxuryRed/30 text-red-200 text-[10px] text-center italic font-light">
-                  <span className="text-luxuryRed font-bold uppercase not-italic mr-2">Alerte :</span>
+                <div className="p-5 bg-luxuryGold/5 border border-luxuryGold/20 text-luxuryGold text-sm text-center italic font-light">
+                  <span className="font-bold uppercase not-italic mr-3">Note :</span>
                   {error}
                 </div>
               )}
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="relative group">
-                  <input type="text" required placeholder="Nom Complet" className="w-full bg-transparent border-b border-white/10 py-2 text-white focus:border-luxuryGold transition-colors text-sm font-light placeholder:text-white/20" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} />
-                </div>
-                <div className="relative group">
-                  <input type="email" required placeholder="Email Pro" className="w-full bg-transparent border-b border-white/10 py-2 text-white focus:border-luxuryGold transition-colors text-sm font-light placeholder:text-white/20" value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} />
-                </div>
-                <div className="relative group">
-                  <input type="text" required placeholder="Entreprise" className="w-full bg-transparent border-b border-white/10 py-2 text-white focus:border-luxuryGold transition-colors text-sm font-light placeholder:text-white/20" value={formData.company} onChange={e => setFormData({ ...formData, company: e.target.value })} />
-                </div>
-                <div className="relative group">
-                  <input type="text" required placeholder="Fonction" className="w-full bg-transparent border-b border-white/10 py-2 text-white focus:border-luxuryGold transition-colors text-sm font-light placeholder:text-white/20" value={formData.position} onChange={e => setFormData({ ...formData, position: e.target.value })} />
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                {[
+                  { id: 'name', label: 'Nom & Prénom', type: 'text', placeholder: 'Ex: Meryem Alaoui' },
+                  { id: 'email', label: 'Email Institutionnel', type: 'email', placeholder: 'Ex: direction@entreprise.ma' },
+                  { id: 'company', label: 'Organisation / Entreprise', type: 'text', placeholder: 'Ex: Agence Souss-Massa' },
+                  { id: 'position', label: 'Titre de Fonction', type: 'text', placeholder: 'Ex: Directrice Générale' },
+                ].map((field) => (
+                  <div key={field.id} className="relative group">
+                    <label className="text-[10px] uppercase tracking-widest text-luxuryGold/70 mb-3 block font-bold transition-colors group-focus-within:text-luxuryGold">
+                      {field.label}
+                    </label>
+                    <input 
+                      type={field.type} 
+                      required 
+                      placeholder={field.placeholder}
+                      className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-luxuryGold transition-all duration-500 text-base font-light outline-none placeholder:text-white/10 placeholder:italic" 
+                      value={formData[field.id as keyof typeof formData]} 
+                      onChange={e => setFormData({ ...formData, [field.id]: e.target.value })} 
+                    />
+                  </div>
+                ))}
               </div>
               
               <button 
                 type="submit" 
                 disabled={isLoading} 
-                className="w-full py-4 bg-luxuryGold text-luxuryBlack font-bold text-[10px] uppercase tracking-[0.3em] hover:bg-luxuryRed hover:text-white transition-all duration-500 disabled:opacity-50 shadow-[0_5px_20px_rgba(225,168,34,0.1)]"
+                className="group relative w-full py-6 bg-luxuryGold text-luxuryBlack font-bold text-sm uppercase tracking-[0.5em] overflow-hidden transition-all duration-700 disabled:opacity-50"
               >
-                {isLoading ? "Traitement en cours..." : "Confirmer ma présence"}
+                <span className="relative z-10">{isLoading ? "Traitement Protocolé..." : "Confirmer ma demande d'accès"}</span>
+                <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
               </button>
+              
+              <p className="text-center text-[10px] text-luxuryTextGray/40 italic font-light uppercase tracking-widest">
+                Accès soumis à validation du comité d'organisation.
+              </p>
             </form>
           </FadeIn>
         )}
