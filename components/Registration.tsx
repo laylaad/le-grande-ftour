@@ -11,8 +11,9 @@ export const Registration: React.FC = () => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
+    
     try {
-      // Cloudflare Pages détecte automatiquement le dossier /functions/api
+      // Vercel servira automatiquement api/register.ts sur cette route
       const response = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -22,11 +23,14 @@ export const Registration: React.FC = () => {
       const result = await response.json();
       
       if (!response.ok || !result.success) {
-        throw new Error(result.error || 'Une erreur est survenue.');
+        throw new Error(result.error || 'Une erreur est survenue lors de l\'envoi.');
       }
+      
       setIsSubmitted(true);
+      setFormData({ name: '', email: '', company: '', position: '' });
     } catch (err: any) { 
-      setError(err.message || "Service momentanément indisponible."); 
+      console.error("Submission error:", err);
+      setError(err.message || "Service momentanément indisponible. Veuillez réessayer plus tard."); 
     } finally { 
       setIsLoading(false); 
     }
@@ -52,8 +56,8 @@ export const Registration: React.FC = () => {
               </svg>
             </div>
             <h4 className="text-white text-3xl mb-4 font-serif italic">Requête Transmise</h4>
-            <p className="text-luxuryTextGray text-lg mb-10 font-light italic">Votre demande est en cours d'examen par notre service protocole.</p>
-            <button onClick={() => setIsSubmitted(false)} className="text-luxuryGold text-xs uppercase font-bold tracking-[0.3em] border-b-2 border-luxuryGold/30 hover:text-white hover:border-white transition-all duration-500">Soumettre une nouvelle demande</button>
+            <p className="text-luxuryTextGray text-lg mb-10 font-light italic">Votre demande a été enregistrée avec succès. Notre service protocole l'étudiera avec la plus grande attention.</p>
+            <button onClick={() => setIsSubmitted(false)} className="text-luxuryGold text-xs uppercase font-bold tracking-[0.3em] border-b-2 border-luxuryGold/30 hover:text-white hover:border-white transition-all duration-500">Retour au formulaire</button>
           </FadeIn>
         ) : (
           <FadeIn className="bg-luxuryBlackElevated p-10 md:p-16 border border-white/5 shadow-2xl relative overflow-hidden">
@@ -61,8 +65,8 @@ export const Registration: React.FC = () => {
             
             <form onSubmit={handleSubmit} className="space-y-12">
               {error && (
-                <div className="p-5 bg-luxuryGold/5 border border-luxuryGold/20 text-luxuryGold text-sm text-center italic font-light">
-                  <span className="font-bold uppercase not-italic mr-3">Note :</span>
+                <div className="p-5 bg-red-900/20 border border-red-500/50 text-red-200 text-sm text-center italic font-light animate-pulse">
+                  <span className="font-bold uppercase not-italic mr-3">Erreur :</span>
                   {error}
                 </div>
               )}
@@ -82,7 +86,7 @@ export const Registration: React.FC = () => {
                       type={field.type} 
                       required 
                       placeholder={field.placeholder}
-                      className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-luxuryGold transition-all duration-500 text-base font-light outline-none placeholder:text-white/10 placeholder:italic" 
+                      className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-luxuryGold transition-all duration-500 text-base font-light outline-none placeholder:text-white/20 placeholder:italic" 
                       value={formData[field.id as keyof typeof formData]} 
                       onChange={e => setFormData({ ...formData, [field.id]: e.target.value })} 
                     />
@@ -95,12 +99,12 @@ export const Registration: React.FC = () => {
                 disabled={isLoading} 
                 className="group relative w-full py-6 bg-luxuryGold text-luxuryBlack font-bold text-sm uppercase tracking-[0.5em] overflow-hidden transition-all duration-700 disabled:opacity-50"
               >
-                <span className="relative z-10">{isLoading ? "Traitement Protocolé..." : "Confirmer ma demande d'accès"}</span>
+                <span className="relative z-10">{isLoading ? "Transmission en cours..." : "Confirmer ma demande d'accès"}</span>
                 <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
               </button>
               
               <p className="text-center text-[10px] text-luxuryTextGray/40 italic font-light uppercase tracking-widest">
-                Accès soumis à validation du comité d'organisation.
+                Votre demande sera traitée sous 48h par notre comité de sélection.
               </p>
             </form>
           </FadeIn>
