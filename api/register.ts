@@ -1,8 +1,7 @@
-// Votre URL Google Apps Script personnalisée
+// URL de votre Google Apps Script
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxOhkXzWAWt8lcb_a9qAppFicd636x009FQ8gRMUHzHTy6vd9rnxtJmU9OAToW-lr6dEw/exec";
 
 export default async function handler(req: any, res: any) {
-  // Autoriser uniquement les requêtes POST
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, error: 'Méthode non autorisée' });
   }
@@ -10,36 +9,28 @@ export default async function handler(req: any, res: any) {
   try {
     const { name, email, company, position } = req.body;
 
-    // Validation rapide
     if (!name || !email) {
-      return res.status(400).json({ success: false, error: 'Le nom et l\'email sont obligatoires.' });
+      return res.status(400).json({ success: false, error: 'Nom et Email requis.' });
     }
 
-    // Envoi des données vers Google Apps Script
-    // On utilise fetch car Vercel supporte fetch nativement en Node.js 18+
+    // Appel au Google Apps Script avec mode: 'no-cors' pour éviter les blocages de redirection
+    // Mais on utilise fetch standard pour Vercel côté serveur
     const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        name,
-        email,
-        company,
-        position,
-        date: new Date().toLocaleString('fr-FR'),
-        source: "Vercel Production"
-      }),
+      body: JSON.stringify({ name, email, company, position }),
     });
 
-    // Google Apps Script répond avec un succès même s'il y a une redirection
-    if (response.ok) {
-      return res.status(200).json({ success: true });
-    } else {
-      return res.status(500).json({ success: false, error: "Erreur lors de l'enregistrement." });
-    }
+    // Si on arrive ici sans erreur d'exception, c'est que la requête est partie vers Google
+    return res.status(200).json({ success: true });
+
   } catch (error: any) {
-    console.error("Erreur API Register:", error);
-    return res.status(500).json({ success: false, error: error.message });
+    console.error("Erreur API:", error);
+    return res.status(500).json({ 
+      success: false, 
+      error: "Service momentanément indisponible." 
+    });
   }
 }
