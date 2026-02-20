@@ -61,62 +61,62 @@ export const SeatingPlan: React.FC = () => {
 
             <div className="space-y-24">
               {/* Ligne VVIP */}
-              <div className="flex items-center justify-between gap-4">
-                <div className="hidden md:block w-12">
-                  <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white/30 -rotate-90 origin-center whitespace-nowrap block">VVIP</span>
+              <div className="flex items-center justify-between gap-2 md:gap-4">
+                <div className="w-10 md:w-12">
+                  <span className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.5em] font-bold text-luxuryGold -rotate-90 origin-center whitespace-nowrap block">VVIP</span>
                 </div>
-                <div className="flex flex-wrap justify-center gap-10 flex-1">
+                <div className="flex flex-wrap justify-center gap-6 md:gap-10 flex-1">
                   {Array.from({ length: 6 }).map((_, i) => (
                     <Table key={i} type="round" id={`VVIP-${i+1}`} category="VVIP" />
                   ))}
                 </div>
-                <div className="hidden md:block w-12">
-                  <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white/30 rotate-90 origin-center whitespace-nowrap block">VVIP</span>
+                <div className="w-10 md:w-12">
+                  <span className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.5em] font-bold text-luxuryGold rotate-90 origin-center whitespace-nowrap block">VVIP</span>
                 </div>
               </div>
 
               {/* Ligne VIP */}
-              <div className="flex items-center justify-between gap-4">
-                <div className="hidden md:block w-12">
-                  <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white/30 -rotate-90 origin-center whitespace-nowrap block">VIP</span>
+              <div className="flex items-center justify-between gap-2 md:gap-4">
+                <div className="w-10 md:w-12">
+                  <span className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.5em] font-bold text-luxuryGold -rotate-90 origin-center whitespace-nowrap block">VIP</span>
                 </div>
-                <div className="flex flex-wrap justify-center gap-8 flex-1">
+                <div className="flex flex-wrap justify-center gap-6 md:gap-8 flex-1">
                   {Array.from({ length: 8 }).map((_, i) => (
                     <Table key={i} type="round" id={`VIP-${i+1}`} category="VIP" />
                   ))}
                 </div>
-                <div className="hidden md:block w-12">
-                  <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white/30 rotate-90 origin-center whitespace-nowrap block">VIP</span>
+                <div className="w-10 md:w-12">
+                  <span className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.5em] font-bold text-luxuryGold rotate-90 origin-center whitespace-nowrap block">VIP</span>
                 </div>
               </div>
 
               {/* Ligne GOLD (Rectangulaires) */}
-              <div className="flex items-center justify-between gap-4">
-                <div className="hidden md:block w-12">
-                  <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white/30 -rotate-90 origin-center whitespace-nowrap block">GOLD</span>
+              <div className="flex items-center justify-between gap-2 md:gap-4">
+                <div className="w-10 md:w-12">
+                  <span className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.5em] font-bold text-luxuryGold -rotate-90 origin-center whitespace-nowrap block">GOLD</span>
                 </div>
-                <div className="flex flex-wrap justify-center gap-6 flex-1">
+                <div className="flex flex-wrap justify-center gap-4 md:gap-6 flex-1">
                   {Array.from({ length: 8 }).map((_, i) => (
                     <Table key={i} type="rect" id={`G-${i+1}`} category="GOLD" />
                   ))}
                 </div>
-                <div className="hidden md:block w-12">
-                  <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white/30 rotate-90 origin-center whitespace-nowrap block">GOLD</span>
+                <div className="w-10 md:w-12">
+                  <span className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.5em] font-bold text-luxuryGold rotate-90 origin-center whitespace-nowrap block">GOLD</span>
                 </div>
               </div>
 
               {/* Ligne STANDARD (Rectangulaires) */}
-              <div className="flex items-center justify-between gap-4 pt-12 border-t border-white/5">
-                <div className="hidden md:block w-12">
-                  <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white/30 -rotate-90 origin-center whitespace-nowrap block">STD</span>
+              <div className="flex items-center justify-between gap-2 md:gap-4 pt-12 border-t border-white/5">
+                <div className="w-10 md:w-12">
+                  <span className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.5em] font-bold text-luxuryGold -rotate-90 origin-center whitespace-nowrap block">STD</span>
                 </div>
-                <div className="flex flex-wrap justify-center gap-6 flex-1">
+                <div className="flex flex-wrap justify-center gap-4 md:gap-6 flex-1">
                   {Array.from({ length: 8 }).map((_, i) => (
                     <Table key={i} type="rect" id={`S-${i+1}`} category="STANDARD" />
                   ))}
                 </div>
-                <div className="hidden md:block w-12">
-                  <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white/30 rotate-90 origin-center whitespace-nowrap block">STD</span>
+                <div className="w-10 md:w-12">
+                  <span className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.5em] font-bold text-luxuryGold rotate-90 origin-center whitespace-nowrap block">STD</span>
                 </div>
               </div>
             </div>
