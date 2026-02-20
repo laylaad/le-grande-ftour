@@ -51,7 +51,7 @@ export const SeatingPlan: React.FC = () => {
         </div>
 
         <div className="grid lg:grid-cols-12 gap-12">
-          {/* Zone Centrale du Plan */}
+            {/* Zone Centrale du Plan */}
           <div className="lg:col-span-12 glass-card rounded-[3rem] p-12 md:p-24 relative border border-white/5">
             
             {/* Indicateur Scène */}
@@ -59,48 +59,64 @@ export const SeatingPlan: React.FC = () => {
               <span className="text-[10px] font-bold tracking-[0.4em] text-gray-400 uppercase">Estrade / Scène</span>
             </div>
 
-            {/* Labels Latéraux */}
-            <div className="absolute left-8 top-0 bottom-0 flex flex-col justify-around py-24 pointer-events-none opacity-40">
-              <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white -rotate-90 origin-center whitespace-nowrap">VVIP</span>
-              <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white -rotate-90 origin-center whitespace-nowrap">VIP</span>
-              <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white -rotate-90 origin-center whitespace-nowrap">GOLD</span>
-              <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white -rotate-90 origin-center whitespace-nowrap">STANDARD</span>
-            </div>
-            <div className="absolute right-8 top-0 bottom-0 flex flex-col justify-around py-24 pointer-events-none opacity-40">
-              <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white rotate-90 origin-center whitespace-nowrap">VVIP</span>
-              <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white rotate-90 origin-center whitespace-nowrap">VIP</span>
-              <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white rotate-90 origin-center whitespace-nowrap">GOLD</span>
-              <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white rotate-90 origin-center whitespace-nowrap">STANDARD</span>
-            </div>
-
-            <div className="space-y-20">
+            <div className="space-y-24">
               {/* Ligne VVIP */}
-              <div className="flex flex-wrap justify-center gap-10">
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <Table key={i} type="round" id={`VVIP-${i+1}`} category="VVIP" />
-                ))}
+              <div className="flex items-center justify-between gap-4">
+                <div className="hidden md:block w-12">
+                  <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white/30 -rotate-90 origin-center whitespace-nowrap block">VVIP</span>
+                </div>
+                <div className="flex flex-wrap justify-center gap-10 flex-1">
+                  {Array.from({ length: 6 }).map((_, i) => (
+                    <Table key={i} type="round" id={`VVIP-${i+1}`} category="VVIP" />
+                  ))}
+                </div>
+                <div className="hidden md:block w-12">
+                  <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white/30 rotate-90 origin-center whitespace-nowrap block">VVIP</span>
+                </div>
               </div>
 
               {/* Ligne VIP */}
-              <div className="flex flex-wrap justify-center gap-8">
-                {Array.from({ length: 8 }).map((_, i) => (
-                  <Table key={i} type="round" id={`VIP-${i+1}`} category="VIP" />
-                ))}
+              <div className="flex items-center justify-between gap-4">
+                <div className="hidden md:block w-12">
+                  <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white/30 -rotate-90 origin-center whitespace-nowrap block">VIP</span>
+                </div>
+                <div className="flex flex-wrap justify-center gap-8 flex-1">
+                  {Array.from({ length: 8 }).map((_, i) => (
+                    <Table key={i} type="round" id={`VIP-${i+1}`} category="VIP" />
+                  ))}
+                </div>
+                <div className="hidden md:block w-12">
+                  <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white/30 rotate-90 origin-center whitespace-nowrap block">VIP</span>
+                </div>
               </div>
 
               {/* Ligne GOLD (Rectangulaires) */}
-              <div className="flex flex-wrap justify-center gap-6">
-                {Array.from({ length: 8 }).map((_, i) => (
-                  <Table key={i} type="rect" id={`G-${i+1}`} category="GOLD" />
-                ))}
+              <div className="flex items-center justify-between gap-4">
+                <div className="hidden md:block w-12">
+                  <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white/30 -rotate-90 origin-center whitespace-nowrap block">GOLD</span>
+                </div>
+                <div className="flex flex-wrap justify-center gap-6 flex-1">
+                  {Array.from({ length: 8 }).map((_, i) => (
+                    <Table key={i} type="rect" id={`G-${i+1}`} category="GOLD" />
+                  ))}
+                </div>
+                <div className="hidden md:block w-12">
+                  <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white/30 rotate-90 origin-center whitespace-nowrap block">GOLD</span>
+                </div>
               </div>
 
               {/* Ligne STANDARD (Rectangulaires) */}
-              <div className="space-y-8 pt-12 border-t border-white/5">
-                <div className="flex flex-wrap justify-center gap-6">
+              <div className="flex items-center justify-between gap-4 pt-12 border-t border-white/5">
+                <div className="hidden md:block w-12">
+                  <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white/30 -rotate-90 origin-center whitespace-nowrap block">STD</span>
+                </div>
+                <div className="flex flex-wrap justify-center gap-6 flex-1">
                   {Array.from({ length: 8 }).map((_, i) => (
                     <Table key={i} type="rect" id={`S-${i+1}`} category="STANDARD" />
                   ))}
+                </div>
+                <div className="hidden md:block w-12">
+                  <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white/30 rotate-90 origin-center whitespace-nowrap block">STD</span>
                 </div>
               </div>
             </div>
