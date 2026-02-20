@@ -5,7 +5,7 @@ interface FadeInProps {
   children: React.ReactNode;
   delay?: number;
   className?: string;
-  direction?: 'up' | 'down' | 'none';
+  direction?: 'up' | 'down' | 'left' | 'right' | 'none';
 }
 
 export const FadeIn: React.FC<FadeInProps> = ({ 
@@ -35,13 +35,21 @@ export const FadeIn: React.FC<FadeInProps> = ({
     };
   }, []);
 
-  const translateClass = direction === 'up' ? 'translate-y-10' : direction === 'down' ? '-translate-y-10' : '';
+  const getInitialTransform = () => {
+    switch (direction) {
+      case 'up': return 'translate-y-10';
+      case 'down': return '-translate-y-10';
+      case 'left': return 'translate-x-10';
+      case 'right': return '-translate-x-10';
+      default: return '';
+    }
+  };
 
   return (
     <div
       ref={domRef}
       className={`${className} transition-all duration-1000 transform ${
-        isVisible ? 'opacity-100 translate-y-0' : `opacity-0 ${translateClass}`
+        isVisible ? 'opacity-100 translate-y-0 translate-x-0' : `opacity-0 ${getInitialTransform()}`
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >

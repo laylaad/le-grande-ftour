@@ -7,19 +7,10 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
           {/* Logo & Description */}
           <div className="flex flex-col items-start">
-            <div className="h-14 mb-6">
-              <img 
-                src="logo.png" 
-                alt="Logo Le Grand Ftour" 
-                className="h-full w-auto object-contain brightness-125"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  const parent = e.currentTarget.parentElement;
-                  if (parent && !parent.querySelector('.text-fallback')) {
-                    parent.insertAdjacentHTML('afterbegin', '<span class="text-fallback text-luxuryGold font-serif font-bold text-2xl tracking-tighter italic">Le Grand Ftour</span>');
-                  }
-                }}
-              />
+            <div className="mb-6">
+              <div className="flex items-center gap-2">
+                <span className="logo-text">Le Grand Ftour</span>
+              </div>
             </div>
             <p className="text-luxuryTextGray text-xs leading-relaxed max-w-xs italic opacity-50">
               Produit par l’agence <span className="text-luxuryGold">Affairino</span>. L'excellence business au Maroc, redéfinissant les connexions stratégiques.

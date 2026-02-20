@@ -2,7 +2,7 @@
  * REMPLACER CETTE URL PAR VOTRE URL DE DÉPLOIEMENT GOOGLE
  * Elle doit se terminer par /exec
  */
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzFx6qwE8l4xTMB1v-w86kx-GsQZCmYWKWGYvfM99ruHTx2gpuWoGOmTzvVrJc5jsn21A/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyEkyYSvaWkGOrssl7Kjfh_RHorj2YFKKffacfCw-Kmd26CnMJhsPKcGw12oIMkWIjOrA/exec";
 
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {
@@ -10,7 +10,7 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
-    const { name, email, company, position } = req.body;
+    const { name, email, company, position, phone, accessType } = req.body;
 
     if (!email) {
       return res.status(400).json({ success: false, error: 'Email manquant' });
@@ -18,13 +18,13 @@ export default async function handler(req: any, res: any) {
 
     // Appel à Google Script
     // On utilise redirect: 'follow' pour être sûr de suivre le 302 de Google
-    const response = await fetch(GOOGLE_SCRIPT_URL, {
+    await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
       redirect: 'follow', 
       headers: {
         'Content-Type': 'text/plain;charset=utf-8', // Google préfère parfois text/plain pour éviter les problèmes de pre-flight CORS
       },
-      body: JSON.stringify({ name, email, company, position }),
+      body: JSON.stringify({ name, email, company, position, phone, accessType }),
     });
 
     // Même si Google met du temps, on libère l'utilisateur immédiatement

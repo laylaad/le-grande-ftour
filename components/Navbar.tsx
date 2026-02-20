@@ -17,30 +17,19 @@ export const Navbar: React.FC = () => {
     }`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <a href="#" className="flex items-center group">
-          <div className="h-10 md:h-12 w-auto transition-all duration-300">
-            <img 
-              src="logo.png" 
-              alt="Le Grand Ftour" 
-              className="h-full w-auto object-contain brightness-125"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-                const parent = e.currentTarget.parentElement;
-                if (parent && !parent.querySelector('.text-fallback')) {
-                  parent.insertAdjacentHTML('afterbegin', '<span class="text-fallback text-luxuryGold font-serif font-bold text-xl tracking-tighter">Le Grand Ftour</span>');
-                }
-              }}
-            />
+          <div className="flex items-center gap-2">
+            <span className="logo-text">Le Grand Ftour</span>
           </div>
         </a>
         
         <div className="hidden lg:flex items-center space-x-10">
-          <a href="#vision" className="text-[10px] tracking-[0.25em] text-white/60 hover:text-luxuryGold transition-all font-medium uppercase">Vision</a>
           <a href="#offres" className="text-[10px] tracking-[0.25em] text-white/60 hover:text-luxuryGold transition-all font-medium uppercase">Offres</a>
+          <a href="#plan" className="text-[10px] tracking-[0.25em] text-white/60 hover:text-luxuryGold transition-all font-medium uppercase">Plan</a>
           <a href="#programme" className="text-[10px] tracking-[0.25em] text-white/60 hover:text-luxuryGold transition-all font-medium uppercase">Programme</a>
           <a href="#contact" className="text-[10px] tracking-[0.25em] text-white/60 hover:text-luxuryGold transition-all font-medium uppercase">Contact</a>
           <a
-            href="#inscription"
-            className="px-8 py-2.5 bg-luxuryGold text-luxuryBlack text-[10px] tracking-[0.3em] hover:bg-white transition-all font-bold uppercase border border-luxuryGold"
+            href="#inscription-hero"
+            className="px-8 py-2.5 bg-gradient-to-r from-luxuryGold via-luxuryGoldLight to-luxuryGoldDark text-luxuryBlack text-[10px] tracking-[0.3em] hover:brightness-110 transition-all font-bold uppercase shadow-lg shadow-luxuryGold/20"
           >
             S'inscrire
           </a>

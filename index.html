@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Le Grand Ftour 2026 | L'Excellence Entrepreneuriale</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400;500;600;700&family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
@@ -66,6 +66,44 @@
       ::-webkit-scrollbar-track { background: #000000; }
       ::-webkit-scrollbar-thumb { background: #e1a822; }
       ::selection { background-color: #e1a822; color: #000000; }
+
+      :root {
+        --color-dark: #050505;       /* Fond principal */
+        --color-gold: #D4AF37;       /* Or classique */
+        --color-gold-light: #F5E0A3; /* Or brillant pour reflets */
+        --color-glass: rgba(255, 255, 255, 0.03); /* Effet verre */
+        --border-gold: rgba(212, 175, 55, 0.1);   /* Bordure dorée subtile */
+      }
+
+      /* Dégradé doré réutilisable */
+      .gold-gradient {
+        background: linear-gradient(135deg, #D4AF37 0%, #F5E0A3 50%, #D4AF37 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Effet de carte en verre */
+      .glass-card {
+        background: var(--color-glass);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-gold);
+      }
+
+      /* Style du texte du logo */
+      .logo-text {
+        font-family: 'Cormorant Garamond', serif; /* Police serif luxueuse */
+        font-size: 1.5rem;                        /* Taille du texte (24px) */
+        font-weight: 700;                         /* Gras */
+        letter-spacing: -0.05em;                  /* Espacement serré pour un look premium */
+        
+        /* Effet de dégradé doré */
+        background: linear-gradient(135deg, #D4AF37 0%, #F5E0A3 50%, #D4AF37 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        
+        /* Optionnel : un léger lissage pour le rendu */
+        -webkit-font-smoothing: antialiased;
+      }
     </style>
   <script type="importmap">
 {
