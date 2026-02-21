@@ -5,7 +5,14 @@ export const Registration: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [formData, setFormData] = useState({ name: '', email: '', company: '', position: '' });
+  const [formData, setFormData] = useState({ 
+    name: '', 
+    email: '', 
+    company: '', 
+    position: '',
+    phone: '',
+    accessType: 'Standard'
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -13,7 +20,6 @@ export const Registration: React.FC = () => {
     setError(null);
     
     try {
-      // Vercel servira automatiquement api/register.ts sur cette route
       const response = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -27,7 +33,14 @@ export const Registration: React.FC = () => {
       }
       
       setIsSubmitted(true);
-      setFormData({ name: '', email: '', company: '', position: '' });
+      setFormData({ 
+        name: '', 
+        email: '', 
+        company: '', 
+        position: '',
+        phone: '',
+        accessType: 'Standard'
+      });
     } catch (err: any) { 
       console.error("Submission error:", err);
       setError(err.message || "Service momentanément indisponible. Veuillez réessayer plus tard."); 
@@ -43,7 +56,8 @@ export const Registration: React.FC = () => {
       <div className="max-w-4xl mx-auto px-6">
         <FadeIn className="text-center mb-16">
           <h2 className="text-luxuryGold tracking-[0.5em] uppercase text-[11px] font-bold mb-6">Conciergerie & Protocole</h2>
-          <h3 className="text-4xl md:text-6xl font-serif text-white uppercase tracking-tighter">Demande d'Invitation</h3>
+          <h3 className="text-4xl md:text-6xl font-serif text-white uppercase tracking-tighter mb-4">Demande d'Invitation</h3>
+          <p className="text-[10px] uppercase tracking-[0.4em] text-white/40 font-bold">Organisé par l'agence <span className="text-luxuryGold/60">Affairino</span></p>
         </FadeIn>
         
         {isSubmitted ? (
@@ -74,9 +88,9 @@ export const Registration: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 {[
                   { id: 'name', label: 'Nom & Prénom', type: 'text', placeholder: 'Ex: Meryem Alaoui' },
-                  { id: 'email', label: 'Email Institutionnel', type: 'email', placeholder: 'Ex: direction@entreprise.ma' },
-                  { id: 'company', label: 'Organisation / Entreprise', type: 'text', placeholder: 'Ex: Agence Souss-Massa' },
-                  { id: 'position', label: 'Titre de Fonction', type: 'text', placeholder: 'Ex: Directrice Générale' },
+                  { id: 'position', label: 'Fonction', type: 'text', placeholder: 'Ex: Directrice Générale' },
+                  { id: 'company', label: 'Entreprise / Administration', type: 'text', placeholder: 'Ex: Agence Souss-Massa' },
+                  { id: 'phone', label: 'Téléphone', type: 'tel', placeholder: 'Ex: +212 600 000 000' },
                 ].map((field) => (
                   <div key={field.id} className="relative group">
                     <label className="text-[10px] uppercase tracking-widest text-luxuryGold/70 mb-3 block font-bold transition-colors group-focus-within:text-luxuryGold">
@@ -92,6 +106,46 @@ export const Registration: React.FC = () => {
                     />
                   </div>
                 ))}
+              </div>
+
+              <div className="relative group">
+                <label className="text-[10px] uppercase tracking-widest text-luxuryGold/70 mb-3 block font-bold transition-colors group-focus-within:text-luxuryGold">
+                  Email
+                </label>
+                <input 
+                  type="email" 
+                  required 
+                  placeholder="Ex: direction@entreprise.ma"
+                  className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-luxuryGold transition-all duration-500 text-base font-light outline-none placeholder:text-white/20 placeholder:italic" 
+                  value={formData.email} 
+                  onChange={e => setFormData({ ...formData, email: e.target.value })} 
+                />
+              </div>
+
+              <div className="space-y-6">
+                <label className="text-[10px] uppercase tracking-widest text-luxuryGold font-bold block">
+                  Type d'accès
+                </label>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  {['Standard', 'Gold', 'VIP', 'VVIP'].map((type) => (
+                    <label key={type} className="flex items-center space-x-3 cursor-pointer group">
+                      <div className="relative flex items-center justify-center">
+                        <input 
+                          type="radio" 
+                          name="accessType" 
+                          value={type}
+                          checked={formData.accessType === type}
+                          onChange={e => setFormData({ ...formData, accessType: e.target.value })}
+                          className="peer appearance-none w-5 h-5 border border-white/20 rounded-full checked:border-luxuryGold transition-all"
+                        />
+                        <div className="absolute w-2.5 h-2.5 bg-luxuryGold rounded-full scale-0 peer-checked:scale-100 transition-transform"></div>
+                      </div>
+                      <span className={`text-sm transition-colors ${formData.accessType === type ? 'text-white font-medium' : 'text-white/40 group-hover:text-white/60'}`}>
+                        Accès {type}
+                      </span>
+                    </label>
+                  ))}
+                </div>
               </div>
               
               <button 
