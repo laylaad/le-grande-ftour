@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FadeIn } from './FadeIn';
 import { MapPin, Calendar, Users } from 'lucide-react';
 
-export const Hero: React.FC = () => {
+export const Hero: React.FC<{ selectedPlan?: string | null }> = ({ selectedPlan }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -14,6 +14,12 @@ export const Hero: React.FC = () => {
     phone: '',
     accessType: 'Standard'
   });
+
+  useEffect(() => {
+    if (selectedPlan) {
+      setFormData(prev => ({ ...prev, accessType: selectedPlan }));
+    }
+  }, [selectedPlan]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -75,23 +81,23 @@ export const Hero: React.FC = () => {
                 Là où les décideurs se rencontrent pour célébrer l'excellence et le partage.
               </p>
 
-              <div className="space-y-8 mb-12">
-                <div className="flex items-center gap-6 group">
-                  <div className="w-12 h-12 rounded-full border border-luxuryGold/30 flex items-center justify-center transition-all duration-500 group-hover:border-luxuryGold group-hover:bg-luxuryGold/5">
-                    <MapPin size={20} className="text-luxuryGold" />
+              <div className="space-y-10 mb-12">
+                <div className="flex items-center gap-8 group">
+                  <div className="w-20 h-20 rounded-full border border-luxuryGold flex items-center justify-center transition-all duration-700 group-hover:bg-luxuryGold/5 group-hover:scale-105">
+                    <MapPin size={28} className="text-luxuryGold" strokeWidth={1.5} />
                   </div>
-                  <div>
-                    <span className="block text-[10px] uppercase tracking-[0.3em] text-luxuryGold font-bold mb-1">Lieu</span>
-                    <span className="text-white/90 text-sm md:text-base font-light tracking-wide">Centre d’Estivage du Ministère de la Justice – Agadir</span>
+                  <div className="space-y-1">
+                    <span className="block text-[11px] uppercase tracking-[0.4em] text-luxuryGold font-bold">Lieu</span>
+                    <span className="block text-white text-lg md:text-xl font-light tracking-tight">Centre d’Estivage du Ministère de la Justice – Agadir</span>
                   </div>
                 </div>
-                <div className="flex items-center gap-6 group">
-                  <div className="w-12 h-12 rounded-full border border-luxuryGold/30 flex items-center justify-center transition-all duration-500 group-hover:border-luxuryGold group-hover:bg-luxuryGold/5">
-                    <Calendar size={20} className="text-luxuryGold" />
+                <div className="flex items-center gap-8 group">
+                  <div className="w-20 h-20 rounded-full border border-luxuryGold flex items-center justify-center transition-all duration-700 group-hover:bg-luxuryGold/5 group-hover:scale-105">
+                    <Calendar size={28} className="text-luxuryGold" strokeWidth={1.5} />
                   </div>
-                  <div>
-                    <span className="block text-[10px] uppercase tracking-[0.3em] text-luxuryGold font-bold mb-1">Date</span>
-                    <span className="text-white/90 text-sm md:text-base font-light tracking-wide">7 Mars 2026</span>
+                  <div className="space-y-1">
+                    <span className="block text-[11px] uppercase tracking-[0.4em] text-luxuryGold font-bold">Date</span>
+                    <span className="block text-white text-lg md:text-xl font-light tracking-tight">7 Mars 2026</span>
                   </div>
                 </div>
               </div>

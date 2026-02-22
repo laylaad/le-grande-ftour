@@ -28,6 +28,7 @@ export const Navbar: React.FC = () => {
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center space-x-10">
           <a href="#offres" className="text-[10px] tracking-[0.25em] text-white/60 hover:text-luxuryGold transition-all font-medium uppercase">Offres</a>
+          <a href="#tarifs" className="text-[10px] tracking-[0.25em] text-white/60 hover:text-luxuryGold transition-all font-medium uppercase">Tarifs</a>
           <a href="#plan" className="text-[10px] tracking-[0.25em] text-white/60 hover:text-luxuryGold transition-all font-medium uppercase">Plan</a>
           <a href="#programme" className="text-[10px] tracking-[0.25em] text-white/60 hover:text-luxuryGold transition-all font-medium uppercase">Programme</a>
           <a href="#contact" className="text-[10px] tracking-[0.25em] text-white/60 hover:text-luxuryGold transition-all font-medium uppercase">Contact</a>
@@ -61,6 +62,7 @@ export const Navbar: React.FC = () => {
       }`}>
         <div className="flex flex-col p-8 space-y-6 text-center">
           <a href="#offres" onClick={toggleMenu} className="text-[11px] tracking-[0.3em] text-white/80 hover:text-luxuryGold transition-all font-medium uppercase">Offres</a>
+          <a href="#tarifs" onClick={toggleMenu} className="text-[11px] tracking-[0.3em] text-white/80 hover:text-luxuryGold transition-all font-medium uppercase">Tarifs</a>
           <a href="#plan" onClick={toggleMenu} className="text-[11px] tracking-[0.3em] text-white/80 hover:text-luxuryGold transition-all font-medium uppercase">Plan</a>
           <a href="#programme" onClick={toggleMenu} className="text-[11px] tracking-[0.3em] text-white/80 hover:text-luxuryGold transition-all font-medium uppercase">Programme</a>
           <a href="#contact" onClick={toggleMenu} className="text-[11px] tracking-[0.3em] text-white/80 hover:text-luxuryGold transition-all font-medium uppercase">Contact</a>
