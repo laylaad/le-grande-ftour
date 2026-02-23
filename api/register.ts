@@ -2,7 +2,7 @@
  * REMPLACER CETTE URL PAR VOTRE URL DE DÉPLOIEMENT GOOGLE
  * Elle doit se terminer par /exec
  */
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyDwCz7nbO8wkoeCkwCAvZpcO6pxaraB6hx_TiLqp2glXA43ew_fNzuCypCqTpRVLqYoQ/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxOtEi-blFAQHddj96rxE_u7CZsK6C_AB5cLdryAZYB0VfYzceQrI-BXd_NcmNuWcACHw/exec";
 
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {
