@@ -31,6 +31,7 @@ export const Navbar: React.FC = () => {
           <a href="#tarifs" className="text-[10px] tracking-[0.25em] text-white/60 hover:text-luxuryGold transition-all font-medium uppercase">Tarifs</a>
           <a href="#plan" className="text-[10px] tracking-[0.25em] text-white/60 hover:text-luxuryGold transition-all font-medium uppercase">Plan</a>
           <a href="#programme" className="text-[10px] tracking-[0.25em] text-white/60 hover:text-luxuryGold transition-all font-medium uppercase">Programme</a>
+          <a href="#presse" className="text-[10px] tracking-[0.25em] text-white/60 hover:text-luxuryGold transition-all font-medium uppercase">Presse</a>
           <a href="#contact" className="text-[10px] tracking-[0.25em] text-white/60 hover:text-luxuryGold transition-all font-medium uppercase">Contact</a>
           <a
             href="#inscription-hero"
@@ -65,6 +66,7 @@ export const Navbar: React.FC = () => {
           <a href="#tarifs" onClick={toggleMenu} className="text-[11px] tracking-[0.3em] text-white/80 hover:text-luxuryGold transition-all font-medium uppercase">Tarifs</a>
           <a href="#plan" onClick={toggleMenu} className="text-[11px] tracking-[0.3em] text-white/80 hover:text-luxuryGold transition-all font-medium uppercase">Plan</a>
           <a href="#programme" onClick={toggleMenu} className="text-[11px] tracking-[0.3em] text-white/80 hover:text-luxuryGold transition-all font-medium uppercase">Programme</a>
+          <a href="#presse" onClick={toggleMenu} className="text-[11px] tracking-[0.3em] text-white/80 hover:text-luxuryGold transition-all font-medium uppercase">Presse</a>
           <a href="#contact" onClick={toggleMenu} className="text-[11px] tracking-[0.3em] text-white/80 hover:text-luxuryGold transition-all font-medium uppercase">Contact</a>
           <a
             href="#inscription-hero"

@@ -9,6 +9,7 @@ import { CountdownSection } from './components/CountdownSection';
 import { Schedule } from './components/Schedule';
 import { Venue } from './components/Venue';
 import { Footer } from './components/Footer';
+import { Press } from './components/Press';
 
 const App: React.FC = () => {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
@@ -31,6 +32,7 @@ const App: React.FC = () => {
         <Pricing onSelectPlan={handleSelectPlan} />
         <SeatingPlan />
         <Schedule />
+        <Press />
         <Venue />
       </main>
       <Footer />
