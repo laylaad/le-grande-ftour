@@ -40,16 +40,10 @@ export const Press: React.FC = () => {
 
   const pressReleases = [
     {
-      date: "15 Février 2026",
-      title: "Lancement officiel de la 5ème édition du Grand Ftour à Agadir",
+      date: "7 Mars 2026",
+      title: "Le Grand Ftour : un rendez-vous d’exception pour célébrer l’excellence entrepreneuriale au Maroc",
       type: "Communiqué de Presse",
-      url: "#" // REMPLACEZ PAR VOTRE LIEN GOOGLE DRIVE
-    },
-    {
-      date: "02 Janvier 2026",
-      title: "L'agence Affairino annonce un partenariat stratégique pour l'excellence",
-      type: "Annonce",
-      url: "#" // REMPLACEZ PAR VOTRE LIEN GOOGLE DRIVE
+      url: "https://drive.google.com/uc?export=download&id=1k6ausScTNqvuFk7KECrISlBxuOAowagA"
     }
   ];
 
@@ -60,12 +54,12 @@ export const Press: React.FC = () => {
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <FadeIn className="text-center mb-20">
-          <h2 className="text-luxuryGold tracking-[0.5em] uppercase text-[11px] font-bold mb-6">Relations Médias</h2>
+          <h2 className="text-luxuryGold tracking-[0.5em] uppercase text-[11px] font-bold mb-6">Relations Médias & Presse</h2>
           <h3 className="text-5xl md:text-7xl font-serif text-white mb-8 tracking-tight">
-            ESPACE <span className="gold-gradient-text italic font-normal">PRESSE</span>
+            ESPACE <span className="gold-gradient-text italic font-normal">MÉDIAS & PRESSE</span>
           </h3>
           <p className="text-luxuryTextGray max-w-2xl mx-auto text-sm md:text-base font-light italic opacity-60">
-            Accédez aux ressources officielles et demandez votre accréditation média pour le Grand Ftour 2026.
+            Accédez au communiqué officiel et demandez votre accréditation pour couvrir l'événement de l'excellence entrepreneuriale à Agadir.
           </p>
         </FadeIn>
 
@@ -75,7 +69,7 @@ export const Press: React.FC = () => {
             <div>
               <div className="flex items-center gap-4 mb-8">
                 <Newspaper className="text-luxuryGold" size={24} />
-                <h4 className="text-xl font-serif text-white uppercase tracking-wider">Communiqués de Presse</h4>
+                <h4 className="text-xl font-serif text-white uppercase tracking-wider">Communiqués Officiels</h4>
               </div>
               <div className="space-y-4">
                 {pressReleases.map((release, idx) => (
@@ -90,41 +84,10 @@ export const Press: React.FC = () => {
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-white/60 hover:text-white transition-colors text-[10px] uppercase tracking-widest font-bold border border-white/10 px-4 py-2 rounded-full group-hover:border-luxuryGold/50 whitespace-nowrap"
                     >
-                      <Download size={14} /> PDF
+                      <Download size={14} /> Télécharger PDF
                     </a>
                   </div>
                 ))}
-              </div>
-            </div>
-
-            <div>
-              <div className="flex items-center gap-4 mb-8">
-                <Camera className="text-luxuryGold" size={24} />
-                <h4 className="text-xl font-serif text-white uppercase tracking-wider">Kit Média</h4>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <a 
-                  href="#" // REMPLACEZ PAR VOTRE LIEN GOOGLE DRIVE
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-8 bg-gradient-to-br from-luxuryGold/10 to-transparent border border-luxuryGold/20 rounded-3xl group cursor-pointer hover:bg-luxuryGold/20 transition-all duration-500 block"
-                >
-                  <FileText className="text-luxuryGold mb-6" size={32} />
-                  <h6 className="text-white text-lg font-serif mb-2">Dossier de Presse</h6>
-                  <p className="text-white/40 text-xs font-light mb-6">Présentation, chiffres clés et vision.</p>
-                  <span className="text-[10px] text-luxuryGold uppercase tracking-widest font-bold flex items-center gap-2">Télécharger <Download size={12} /></span>
-                </a>
-                <a 
-                  href="#" // REMPLACEZ PAR VOTRE LIEN GOOGLE DRIVE
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-8 bg-white/[0.02] border border-white/5 rounded-3xl group cursor-pointer hover:border-luxuryGold/30 transition-all duration-500 block"
-                >
-                  <Camera className="text-luxuryGold mb-6" size={32} />
-                  <h6 className="text-white text-lg font-serif mb-2">Photothèque HD</h6>
-                  <p className="text-white/40 text-xs font-light mb-6">Visuels haute résolution pour publications.</p>
-                  <span className="text-[10px] text-white/60 uppercase tracking-widest font-bold flex items-center gap-2">Accéder <Download size={12} /></span>
-                </a>
               </div>
             </div>
           </div>
@@ -134,8 +97,8 @@ export const Press: React.FC = () => {
             <div className="bg-luxuryBlackElevated p-8 md:p-10 border border-white/5 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-luxuryGold to-transparent opacity-30"></div>
               
-              <h4 className="text-2xl font-serif text-white mb-2">Accréditation Presse</h4>
-              <p className="text-white/40 text-xs font-light mb-10 uppercase tracking-widest">Demande d'accès média</p>
+              <h4 className="text-2xl font-serif text-white mb-2">Accréditation Média & Presse</h4>
+              <p className="text-white/40 text-xs font-light mb-10 uppercase tracking-widest">Demande d'accès officiel</p>
 
               {isSubmitted ? (
                 <div className="text-center py-12">
