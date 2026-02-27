@@ -1,7 +1,7 @@
 /**
  * URL DE DÉPLOIEMENT GOOGLE POUR LA PRESSE
  */
-const GOOGLE_PRESS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzMq7_cr-dvP-jZrY1PspF1myxtzNBQ9fnBe9pyEpGXQkrKyK7DcFUFl3L9THmmhfzZ/exec";
+const GOOGLE_PRESS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyXZSFwfKVl2Vfnkv5mKUuomDuSKUFwn3N1NpuoQs3asEDU2RzhFZOoL-Z0iw5hKiQx/exec";
 
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {
