@@ -1,6 +1,6 @@
 import React from 'react';
 import { FadeIn } from './FadeIn';
-import { Download, FileText, Camera, Newspaper } from 'lucide-react';
+import { Download, Newspaper } from 'lucide-react';
 
 export const Press: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = React.useState(false);
