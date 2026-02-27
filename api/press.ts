@@ -1,7 +1,7 @@
 /**
  * URL DE DÉPLOIEMENT GOOGLE POUR LA PRESSE
  */
-const GOOGLE_PRESS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyi5Wbbdwh85TvLQZQSBlZyNMQK96lewFhCzufFAUKcn1IqRt21gozoPPjcwFI6Zaox/exec"; // À REMPLIR PAR L'UTILISATEUR
+const GOOGLE_PRESS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxnSAa_MerXp-R8URXmDSSWuJyRaacqarw83GXN9iopn0j4plO77isBoySJOG7ZN9Ul/exec"; // À REMPLIR PAR L'UTILISATEUR
 
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {
